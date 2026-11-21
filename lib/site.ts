@@ -1,7 +1,7 @@
-const repoUrl = "https://github.com/ncecere/open-mcp-portal";
+const repoUrl = "https://github.com/bitop-dev/open-mcp-portal";
 // Links into the repository are pinned at the release tag, so they keep
 // showing the files of the version this page describes.
-const tree = `${repoUrl}/blob/v0.13.1`;
+const tree = `${repoUrl}/blob/v0.15.3`;
 const docsUrl = "https://docs.omp.bitop.dev";
 
 export const site = {
@@ -15,18 +15,18 @@ export const site = {
     "Open MCP Portal (OMP) is a self-hosted, open-source portal where teams register the MCP servers they build, publish them to a company catalog, and give people and agents governed access through curated gateways, with sign-in, tool scopes, approval of sensitive calls, signed identity, delegated credentials and audit.",
   docsUrl,
   repoUrl,
-  version: "v0.13.1",
+  version: "v0.15.3",
   // The release day of `version` (the footer and the sitemap show it).
-  releaseDate: "2026-11-01" as string | null,
-  releaseNotesUrl: `${repoUrl}/releases/tag/v0.13.1`,
+  releaseDate: "2026-11-21" as string | null,
+  releaseNotesUrl: `${repoUrl}/releases/tag/v0.15.3`,
   // The release the "Since v0.3" section counts from (the one this page described before).
   sinceVersion: "v0.3.2",
   // The published, cosign-signed container image of `version`, by digest
-  // (the tag is v0.13.1). Verify with cosign v3.0 or newer, certificate
+  // (the tag is v0.15.3). Verify with cosign v3.0 or newer, certificate
   // identity `imageCertificateIdentity`, OIDC issuer `imageOidcIssuer`.
-  image: "ghcr.io/ncecere/open-mcp-portal@sha256:cec6a9e1189845ca2f9827e972c55af20ce22de3a40645abdf3ab08a6730a453",
-  imageTag: "ghcr.io/ncecere/open-mcp-portal:v0.13.1",
-  imageCertificateIdentity: `${repoUrl}/.github/workflows/image.yml@refs/tags/v0.13.1`,
+  image: "ghcr.io/bitop-dev/open-mcp-portal@sha256:bae00dfda49eec8ed3dc0625b8276f677259d763da9f2904fd1ab8fab3212afa",
+  imageTag: "ghcr.io/bitop-dev/open-mcp-portal:v0.15.3",
+  imageCertificateIdentity: `${repoUrl}/.github/workflows/image.yml@refs/tags/v0.15.3`,
   imageOidcIssuer: "https://token.actions.githubusercontent.com",
   releasesUrl: `${repoUrl}/releases`,
   licenseUrl: `${tree}/LICENSE`,
@@ -48,7 +48,7 @@ export const site = {
   tracingUrl: `${tree}/docs/deploy.md#tracing`,
   databaseRolesUrl: `${tree}/docs/deploy.md#database-roles`,
   mailExampleUrl: `${tree}/examples/mail-mcp/README.md`,
-  websiteRepoUrl: "https://github.com/ncecere/omp-website",
+  websiteRepoUrl: "https://github.com/bitop-dev/omp-website",
   // The example portal used in every snippet on the page: the host the screenshots show
   // (the Example Corp capture instance in omp-assets, and the docs' examples).
   exampleHost: "mcp.example.com",

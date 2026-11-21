@@ -7,7 +7,7 @@
  * the product, or copy it, and check with: cmp app/brand.css ../omp-docs/app/brand.css
  *
  * The values come from Open MCP Portal's own UI
- * (github.com/ncecere/open-mcp-portal), which uses the Bitop UI library:
+ * (github.com/bitop-dev/open-mcp-portal), which uses the Bitop UI library:
  * web/src/components/ui/themes/neutral.css (the "neutral" theme: cool slate
  * neutrals with an indigo accent, light and dark; shadows) and
  * web/src/components/ui/styles/tokens.css (radii, font stacks). Each value

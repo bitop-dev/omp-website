@@ -19,10 +19,10 @@ import { ButtonLink, CheckList, CodeBlock, Eyebrow, Note, SectionHeading, Strong
 import { docs, site } from "@/lib/site";
 
 /*
- * Every claim here is checked against Open MCP Portal v0.13.1
- * (github.com/ncecere/open-mcp-portal at the v0.13.1 tag; the repository was
+ * Every claim here is checked against Open MCP Portal v0.15.3
+ * (github.com/bitop-dev/open-mcp-portal at the v0.15.3 tag; the repository was
  * called open-mcp-gateway until the rename): docs/releases/v0.3.3.md to
- * docs/releases/v0.13.1.md and CHANGELOG.md (the "New since v0.3.2" section),
+ * docs/releases/v0.15.3.md and CHANGELOG.md (the "New since v0.3.2" section),
  * docs/status.md and docs/roadmap.md (the status card), docs/threat-model.md,
  * docs/mcp-protocol.md, docs/mcp-tasks.md, docs/admin-overview.md,
  * docs/notifications.md, docs/automation-tokens.md, docs/cli.md,
@@ -706,14 +706,13 @@ function Features() {
 
 // What shipped between site.sinceVersion (v0.3.2) and site.version, one card
 // per user- or operator-facing feature, grouped by theme. Each names the
-// release it came in (docs/releases/v0.3.3.md to v0.13.1.md, CHANGELOG.md) and
+// release it came in (docs/releases/v0.3.3.md to v0.15.3.md, CHANGELOG.md) and
 // links its page on the docs site. Sources per card: docs/tool-classification.md,
 // docs/credential-scopes.md, docs/gateway-curation.md, docs/tool-approvals.md,
 // docs/access-requests.md, docs/registry.md "Governance", docs/upstream-protection.md,
 // docs/upstream-failover.md, docs/mcp-tasks.md, docs/threat-model.md BR-1,
 // docs/service-connections.md, docs/cli.md, integrations/github-action/README.md,
-// docs/scim.md, docs/releases/v0.13.0.md. Unshipped work (audit-evidence export,
-// content scanning, key providers, the Terraform provider) is not a card.
+// docs/scim.md, docs/content-scanning.md, docs/audit-sinks.md and the release notes.
 
 type Shipped = { title: string; release: string; body: ReactNode; href: string; link: string };
 
@@ -824,6 +823,27 @@ const shippedThemes: { id: string; title: string; lead: string; items: Shipped[]
         ),
         href: docs("teams/server-governance"),
         link: "Server governance",
+      },
+    ],
+  },
+  {
+    id: "since-audit",
+    title: "Definition review and audit",
+    lead: "Review changes to MCP definitions and forward signed audit records to your own receiver.",
+    items: [
+      {
+        title: "Definition scan findings",
+        release: "v0.14.0",
+        body: "The portal flags suspicious text in tool, prompt and resource definitions for reviewers. Shadow mode shows findings without blocking a capability.",
+        href: docs("teams/definition-scanning"),
+        link: "Definition scanning",
+      },
+      {
+        title: "Signed audit checkpoints and webhook sinks",
+        release: "v0.15.1",
+        body: "Operators can enable signed checkpoints and send the audit stream to a webhook receiver. Platform admins can check each sink's delivery status.",
+        href: docs("operate/audit-stream"),
+        link: "Audit streaming",
       },
     ],
   },
@@ -1272,7 +1292,7 @@ function Screenshots() {
 /* ------------------------------------------------------------ Self-host */
 
 // Makefile `demo` and compose.demo.yaml; docs/deploy.md "Demo".
-const quickStart = `git clone --branch ${site.version} https://github.com/ncecere/open-mcp-portal.git
+const quickStart = `git clone --branch ${site.version} ${site.repoUrl}.git
 cd open-mcp-portal
 make demo    # portal + PostgreSQL + a fake MCP server
              # on http://localhost:8090, with development sign-in`;
@@ -1440,13 +1460,13 @@ function OpenSource() {
               <Eyebrow>Project status</Eyebrow>
             </div>
             <h3 id="status-title" className="mt-3 text-2xl font-semibold tracking-tight text-brand-text">
-              {site.version} is released, and honest about it
+              {site.version} is released
             </h3>
             <div className="mt-4 space-y-3 leading-relaxed text-brand-muted">
               <p>
-                Everything on this page is built and tested against real PostgreSQL, with browser checks of the new pages.
-                {" "}{site.version} was published on November 1, 2026. It is pre-1.0 software: v1.0.0 has not been cut, and
-                the portal hasn&apos;t run in production with a real team. Development is paused after this release.
+                {site.version} was published on November 21, 2026. The patch updates Go, makes the database pool
+                size configurable, and fixes provider credential handling, call-log retention, and oversized audit
+                delivery. It is pre-1.0 software, and a pilot with a real team is still open.
               </p>
               <p>
                 Proven on one real deployment (a Kubernetes cluster with OIDC sign-in and a CloudNativePG database with
@@ -1474,12 +1494,12 @@ function OpenSource() {
                 and their logs may record it; narrowing a provider token is only as good as the provider&apos;s support for a
                 scope on refresh; everyone who calls a server that uses the portal&apos;s own OAuth client shares its token;
                 a server in OAuth mode can&apos;t use a private CA yet, and CRL and OCSP are not checked; split database
-                roles are opt-in, and the audit log can&apos;t yet be streamed off the host.
+                roles are opt-in, and audit streaming supports webhook sinks and pull consumers.
               </p>
               <p>
                 Planned on the <TextLink href={site.roadmapUrl}>roadmap</TextLink> (an order of work, not a schedule;
                 every item is a GitHub issue with its implementation plan), after the real-world checks and the pilot:
-                streaming the audit log to a SIEM, legal holds and per-person export and erasure, a Helm chart,
+                syslog and OTLP audit sinks, bulk audit exports, legal holds and per-person export and erasure, a Helm chart,
                 list-changed subscriptions, a console to try a tool, more of the catalog (categories, icons, a README per
                 server), a tool-search mode for large gateways, and usage export for chargeback.
               </p>
