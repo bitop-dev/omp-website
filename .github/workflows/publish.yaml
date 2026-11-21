@@ -85,5 +85,5 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: |
-            ghcr.io/ncecere/omp-website:${{ github.sha }}
-            ghcr.io/ncecere/omp-website:latest
+            ghcr.io/bitop-dev/omp-website:${{ github.sha }}
+            ghcr.io/bitop-dev/omp-website:latest
