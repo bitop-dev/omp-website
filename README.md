@@ -44,7 +44,7 @@ The logo's source, exports and usage rules live in `../omp-assets/logo/` (the ma
 
 ## Screenshots
 
-The page has 8 named screenshot slots in its web UI section, listed in `lib/slots.json` with their alt text and captions. A slot without an image shows a clearly marked placeholder with the expected file name. They are filled from the Example Corp capture in `../omp-assets/screenshots/` (`MANIFEST.md` there), retaken on Open MCP Portal v0.13.1. Three slots name a docs file through `"file"` (`gateway-capabilities` → `gateway-capabilities-picker`, `call-detail` → `call-detail-payload`) or one of the website's own (`connect-confirm` → `connect-confirm-more-scopes`); `approval-review` and `server-governance` use the docs files of the same name, new in the v0.13.1 capture (they replaced the `server-sign-in` and `admin-usage` slots).
+The page has 8 named screenshot slots in its web UI section, listed in `lib/slots.json` with their alt text and captions. A slot without an image shows a clearly marked placeholder with the expected file name. They are filled from the Example Corp capture in `../omp-assets/screenshots/` (`MANIFEST.md` there), retaken on the published Open MCP Portal v0.15.3 image. Three slots name a docs file through `"file"` (`gateway-capabilities` → `gateway-capabilities-picker`, `call-detail` → `call-detail-payload`) or one of the website's own (`connect-confirm` → `connect-confirm-more-scopes`); `approval-review` and `server-governance` use the docs files of the same name, new in the v0.13.1 capture (they replaced the `server-sign-in` and `admin-usage` slots).
 
 ```sh
 npm run images   # copy the screenshots that exist into public/images as WebP, record their sizes
